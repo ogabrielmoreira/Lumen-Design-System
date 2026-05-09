@@ -1623,12 +1623,51 @@ code {
    RESPONSIVE
    ========================================================= */
 @media (max-width: 900px) {
+  .topbar { height: auto; }
+  .topbar__inner {
+    height: auto;
+    min-height: var(--topbar-h);
+    padding: 10px 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .topnav {
+    order: 3;
+    flex: 1 1 100%;
+    margin-left: 0;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .topnav__link { white-space: nowrap; }
+  .topbar__actions { margin-left: auto; }
   .topbar__search { display: none; }
-  .topnav { margin-left: 0; }
   .shell { grid-template-columns: 1fr; }
   .sidebar { display: none; }
   .main { padding: 24px 20px 60px; }
+  .page-title-row { flex-wrap: wrap; gap: 8px; }
+  .status-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .radius-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center !important;
+  }
+  .demo-aside { width: 100%; }
   .demo-modal__panel { inset: 8px; }
+}
+
+@media (max-width: 640px) {
+  .main { padding: 20px 14px 48px; }
+  .topbar__inner { padding: 8px 12px; }
+  .status-grid { grid-template-columns: 1fr !important; }
+  .token-row {
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .token-row__name,
+  .token-row__value { width: auto; }
+  .token-row__viz { width: 100%; }
 }
 </style>
 </head>
@@ -1807,7 +1846,7 @@ code {
           <h2 class="page-section__title">Component status</h2>
         </div>
         <p class="page-lede" style="margin-bottom:16px">Every component carries one of four lifecycle labels so consumers know what's safe to ship.</p>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div class="status-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
           <div class="surface-card" style="width:auto"><div class="surface-card__body">
             <span class="badge badge--success">✓ AVAILABLE</span>
             <p class="surface-card__text" style="margin-top:8px">Stable, fully coded, safe for production.</p>
@@ -1891,7 +1930,7 @@ code {
           <h2 class="page-section__title">Radius</h2>
           <span class="page-section__count">4 steps</span>
         </div>
-        <div style="display:flex;gap:24px;align-items:flex-end;background:white;border:1px solid var(--line);border-radius:var(--r-md);padding:24px;">
+        <div class="radius-grid" style="display:flex;gap:24px;align-items:flex-end;background:white;border:1px solid var(--line);border-radius:var(--r-md);padding:24px;">
           <div style="text-align:center"><div style="width:64px;height:64px;background:var(--brand-100);border:1px solid var(--brand-500);border-radius:4px;margin-bottom:8px"></div><div style="font:500 11px var(--font-mono);color:var(--text-3)">radius/sm — 4px</div></div>
           <div style="text-align:center"><div style="width:64px;height:64px;background:var(--brand-100);border:1px solid var(--brand-500);border-radius:8px;margin-bottom:8px"></div><div style="font:500 11px var(--font-mono);color:var(--text-3)">radius/md — 8px</div></div>
           <div style="text-align:center"><div style="width:64px;height:64px;background:var(--brand-100);border:1px solid var(--brand-500);border-radius:12px;margin-bottom:8px"></div><div style="font:500 11px var(--font-mono);color:var(--text-3)">radius/lg — 12px</div></div>
